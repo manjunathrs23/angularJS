@@ -1,0 +1,26 @@
+<h1> Project Drop-down </h1>
+
+<form>
+
+Select the project whose Service you want to test:
+<select name="project" class="form-control" id="project" ng-model='projectName' required>
+  <option value="" selected="" disabled>Select</option>
+  <option ng-repeat="option in projects" value="{{option}}">{{option}}</option>
+</select>
+
+<button name="submit" id="submit" value="Submit" ng-click="testAPI(projectName);" > Submit </button>
+</form>
+
+
+<h3> Status of {{results.length}} services for {{projectName}}</h3>
+<div ng-repeat="result in results">
+	
+	<span ng-if="result.status">
+	{{result.name}} -- <img src="img/success.JPG" />
+	</span>
+	
+	<span ng-if="!result.status">
+	{{result.name}} -- <img src="img/failure.JPG" />
+	</span>
+
+</div>
